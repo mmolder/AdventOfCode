@@ -66,5 +66,3 @@ with open('input_3.csv', 'r') as input:
                 closest_cross = cross
         print(closest_cross)
         print(closest_distance)
-        
-
