@@ -5,7 +5,6 @@ with open("2020/input_1_1.csv", 'r') as file:
 
 content = sorted(content, key=lambda x: x)
 
-
 def task2():
     for i in range(len(content)):
         j = i + 1
