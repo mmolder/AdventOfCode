@@ -6,8 +6,6 @@ with open("2020/input_2_1.csv", 'r') as file:
 def getMinMax(pw):
     numbers = pw[0:pw.find(" ")]
     [minimum, maximum] = numbers.split("-")
-    #minimum = numbers[0:numbers.find("-")]
-    #maximum = numbers[numbers.find("-")+1:]
     return(int(minimum), int(maximum))
 
 
