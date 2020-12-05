@@ -21,13 +21,9 @@ def task1():
         column = getColumn(boarding_pass[-3:], 0, 7)
         seatIds.append(row * 8 + column)
     print(max(seatIds))
+    return seatIds
 
-def task2():
-    seatIds = []
-    for boarding_pass in boarding_passes:
-        row = getRow(boarding_pass, 0, 127)
-        column = getColumn(boarding_pass[-3:], 0, 7)
-        seatIds.append(row * 8 + column)
+def task2(seatIds):
     sorted_seats = sorted(seatIds, key=lambda x: x)
     print(missing_elements(sorted_seats))
 
@@ -37,5 +33,5 @@ with open('2020/input_5.csv', 'r') as file:
     for boarding_pass in file:
         boarding_passes.append(boarding_pass.strip())
 
-task1()
-task2()
+seatIds = task1()
+task2(seatIds)
