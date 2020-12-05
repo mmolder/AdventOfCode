@@ -1,28 +1,14 @@
-boarding_passes = []
-
-with open('2020/input_5.csv', 'r') as file:
-    for boarding_pass in file:
-        boarding_passes.append(boarding_pass.strip())
-
 def getRow(partition, minRow, maxRow):
     if partition[0] == 'F':
-        if len(partition) == 4:
-            return int(minRow)
-        return getRow(partition[1:], minRow, int((minRow+maxRow)/2-0.5))
+        return getRow(partition[1:], minRow, int((minRow+maxRow)/2-0.5)) if len(partition) > 4 else int(minRow)
     elif partition[0] == 'B':
-        if len(partition) == 4:
-            return int(maxRow)
-        return getRow(partition[1:], int((minRow+maxRow)/2+0.5), maxRow)
+        return getRow(partition[1:], int((minRow+maxRow)/2+0.5), maxRow) if len(partition) > 4 else int(maxRow)
 
 def getColumn(partition, minColumn, maxColumn):
     if partition[0] == 'L':
-        if len(partition) == 1:
-            return minColumn
-        return getColumn(partition[1:], minColumn, int((minColumn+maxColumn)/2-0.5))
+        return getColumn(partition[1:], minColumn, int((minColumn+maxColumn)/2-0.5)) if len(partition) > 1 else int(minColumn)
     elif partition[0] == 'R':
-        if len(partition) == 1:
-            return maxColumn
-        return getColumn(partition[1:], int((minColumn+maxColumn)/2+0.5), maxColumn)
+        return getColumn(partition[1:], int((minColumn+maxColumn)/2+0.5), maxColumn) if len(partition) > 1 else int(maxColumn)
 
 def missing_elements(seatIds):
     start, end = seatIds[0], seatIds[-1]
@@ -34,7 +20,7 @@ def task1():
         row = getRow(boarding_pass, 0, 127)
         column = getColumn(boarding_pass[-3:], 0, 7)
         seatIds.append(row * 8 + column)
-    print(row, column, max(seatIds))
+    print(max(seatIds))
 
 def task2():
     seatIds = []
@@ -44,6 +30,12 @@ def task2():
         seatIds.append(row * 8 + column)
     sorted_seats = sorted(seatIds, key=lambda x: x)
     print(missing_elements(sorted_seats))
+
+boarding_passes = []
+
+with open('2020/input_5.csv', 'r') as file:
+    for boarding_pass in file:
+        boarding_passes.append(boarding_pass.strip())
 
 task1()
 task2()
