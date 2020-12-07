@@ -1,5 +1,3 @@
-import string
-
 with open("2020/input_6.csv", 'r') as file:
     lines = file.read()
 
@@ -20,6 +18,5 @@ def task2():
         unique_yes += len(list(res))
     print(unique_yes)
     
-
 task1()
 task2()
