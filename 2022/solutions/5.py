@@ -1,6 +1,6 @@
-from utils import readFile
+from utils.utils import readFile
 
-lines = readFile(r'C:\Users\mikael.molder\Documents\Advent of code\2022\input_5.txt')
+lines = readFile('input_5.txt')
 start_crate_height = 8
 start_moves = 10
 

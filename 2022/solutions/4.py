@@ -1,7 +1,6 @@
-content = []
-with open("input_4.txt", 'r') as file:
-    for line in file:
-        content.append(line.strip())
+from utils.utils import readFile
+
+content = readFile('input_4.txt')
         
 def part1():
     range_contains_other = 0
@@ -25,5 +24,5 @@ def part2():
             range_overlaps_other += 1
     print(range_overlaps_other) 
 
-#part1()
+part1()
 part2()

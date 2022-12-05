@@ -1,6 +1,6 @@
-from utils import readFile
+from utils.utils import readFile
 
-lines = readFile(r'C:\Users\mikael.molder\Documents\Advent of code\2022\input_2_2.txt')
+lines = readFile('input_2.txt')
 score_dict = {
     'A X': (4, 3), 'A Y': (8, 4), 'A Z': (3, 8),
     'B X': (1, 1), 'B Y': (5, 5), 'B Z': (9, 9),

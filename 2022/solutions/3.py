@@ -1,13 +1,12 @@
-content = []
-with open("input_3.txt", 'r') as file:
-    for line in file:
-        content.append(line.strip())
+from utils.utils import readFile
+
+content = readFile('input_3.txt')
         
 def getPriority(letter):
     if letter.isupper():
-        return ord(letter) - 64 + 26
+        return ord(letter) - ord('A') + 27
     else:
-        return ord(letter) - 96
+        return ord(letter) - ord('a') + 1
     
 def chunks(lst, n):
     for i in range(0, len(lst), n):
@@ -23,13 +22,12 @@ def part1():
         common = list(set(first_half) & set(second_half))
         prio = getPriority(common[0])
         sum += prio
-        
     print(sum)
     
 def part2():
     sum = 0
     for group in chunks(content, 3):
-        first, second, third = group
+        first, second, third = [x.strip() for x in group]
         common = list(set(first) & set(second) & set(third))
         prio = getPriority(common[0])
         sum += prio
