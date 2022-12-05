@@ -1,8 +1,8 @@
 from utils.utils import readFile
 
 lines = readFile('input_5.txt')
-start_crate_height = 8
-start_moves = 10
+end_crate_line = 8
+start_moves_line = 10
 
 def move_container(containers, number_of_moves, from_stack, to_stack):
     for _ in range(number_of_moves):
@@ -16,7 +16,7 @@ def move_containers(containers, number_of_moves, from_stack, to_stack):
         containers[from_stack].pop()
         
 def init_crates():
-    crates = [x.replace('    ', ' ').replace('\n', '').split(' ') for x in lines[:start_crate_height]]
+    crates = [x.replace('    ', ' ').replace('\n', '').split(' ') for x in lines[:end_crate_line]]
     transpose_list = [list(i) for i in zip(*crates)]
     transpose_list = [[x for x in y if x] for y in transpose_list]
     [x.reverse() for x in transpose_list]
@@ -24,7 +24,7 @@ def init_crates():
 
 def part1():
     crates = init_crates()
-    moves = [x.strip() for x in lines[start_moves:]]
+    moves = [x.strip() for x in lines[start_moves_line:]]
     for move in moves:
         _, num_moves, _, from_stack, _ , to_stack = move.split(' ')
         move_container(crates, int(num_moves), int(from_stack)-1, int(to_stack)-1)
@@ -36,7 +36,7 @@ def part1():
     
 def part2():
     crates = init_crates()
-    moves = [x.strip() for x in lines[start_moves:]]
+    moves = [x.strip() for x in lines[start_moves_line:]]
     for move in moves:
         _, num_moves, _, from_stack, _ , to_stack = move.split(' ')
         move_containers(crates, int(num_moves), int(from_stack)-1, int(to_stack)-1)
